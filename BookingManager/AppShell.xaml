@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BookingManager.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:BookingManager"
+    xmlns:views="clr-namespace:BookingManager.Views"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+    <ShellContent Title="Bookings"
+                  ContentTemplate="{DataTemplate views:BookingView}" />
+    <ShellContent Title="Customers"
+                  ContentTemplate="{DataTemplate views:CustomerView}"/>
+    <ShellContent Title="Employees"
+                  ContentTemplate="{DataTemplate views:EmployeeView}" />
+    </TabBar>
+</Shell>
+

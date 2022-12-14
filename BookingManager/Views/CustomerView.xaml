@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:BookingManagerLibrary.Models;assembly=BookingManagerLibrary"
+             x:Class="BookingManager.Views.CustomerView"
+             Title="CustomerView">
+    <VerticalStackLayout>
+        <HorizontalStackLayout>
+        <Grid>
+        <Grid>
+            <HorizontalStackLayout>
+                <Entry Text="{Binding CustIdSearch}"/>
+                <Button Text="Search" Command="SearchCustomers"/>
+                <Button Text="Reset" Command="ResetCommand"/>
+
+            </HorizontalStackLayout>
+            <Label Text="Current customers:"/>
+            <VerticalStackLayout BindableLayout.ItemsSource="{Binding Customers}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:Customer">
+                        <Grid Focused="Customer_Selected">
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding FirstName}"/>
+                                <Label Text="{Binding LastName}"/>
+                                <Label Text="{Binding CustomerId}"/>
+                                <Label Text="{Binding CustomerAddress.Line1}"/>
+                                <Label Text="{Binding CustomerAddress.Line2}"/>
+                                <Label Text="{Binding CustomerAddress.City}"/>
+                                <Label Text="{Binding CustomerAddress.State}"/>
+                                <Label Text="{Binding CustomerAddress.Zip}"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+        </Grid>
+        <HorizontalStackLayout IsVisible="{Binding ShowCreateNewCustomer}">
+            <Entry Text="{Binding SelectedCustomer.FirstName}"/>
+            <Label Text="{Binding SelectedCustomer.LastName}"/>
+            <Label Text="{Binding SelectedCustomer.CustomerId}"/>
+            <Label Text="{Binding SelectedCustomer.CustomerAddress.Line1}"/>
+            <Label Text="{Binding SelectedCustomer.CustomerAddress.Line2}"/>
+            <Label Text="{Binding SelectedCustomer.CustomerAddress.City}"/>
+            <Label Text="{Binding SelectedCustomer.CustomerAddress.State}"/>
+            <Label Text="{Binding SelectedCustomer.CustomerAddress.Zip}"/>
+            <Button Text="Create" Command="CreateNewCustomer"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Button Text="Create new customer" Command="ShowCreateNewCustomer"/>
+        </HorizontalStackLayout>
+        </Grid>
+            <Grid>
+        <Grid>
+            <Label Text="Selected Customer Billing Profiles:"/>
+            <VerticalStackLayout BindableLayout.ItemsSource="{Binding SelectedCustBillingProfiles}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:Customer">
+                        <Grid Focused="Billing_Profile_Selected">
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding FirstName}"/>
+                                <Label Text="{Binding LastName}"/>
+                                <Label Text="{Binding CustomerId}"/>
+                                <Label Text="{Binding CustomerAddress.Line1}"/>
+                                <Label Text="{Binding CustomerAddress.Line2}"/>
+                                <Label Text="{Binding CustomerAddress.City}"/>
+                                <Label Text="{Binding CustomerAddress.State}"/>
+                                <Label Text="{Binding CustomerAddress.Zip}"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+        </Grid>
+        <HorizontalStackLayout IsVisible="{Binding ShowCreateNewBillingProfileBox}">
+            <Entry Text="{Binding SelectedCustomer.FirstName}"/>
+            <Label Text="{Binding SelectedCustomer.LastName}"/>
+            <Label Text="{Binding SelectedCustomer.CustomerId}"/>
+            <Label Text="{Binding SelectedCustomer.CustomerAddress.Line1}"/>
+            <Label Text="{Binding SelectedCustomer.CustomerAddress.Line2}"/>
+            <Label Text="{Binding SelectedCustomer.CustomerAddress.City}"/>
+            <Label Text="{Binding SelectedCustomer.CustomerAddress.State}"/>
+            <Label Text="{Binding SelectedCustomer.CustomerAddress.Zip}"/>
+            <Button Text="Create" Command="CreateNewBillingProfile"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Button Text="Create new customer" Command="ShowCreateNewBillingProfile"/>
+        </HorizontalStackLayout>
+        </Grid>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

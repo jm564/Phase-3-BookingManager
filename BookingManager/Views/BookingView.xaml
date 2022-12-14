@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookingManager.Views.BookingView"
+             Title="Bookings">
+    <VerticalStackLayout>
+        <Grid>
+            <HorizontalStackLayout>
+                <Button Text="Active Trips" Command="ShowCreateNewEmployee"/>
+                <Entry Text="{Binding SelectedEmployee.FirstName}"/>
+                <Button Text="Trips for customer" Command="ShowCreateNewEmployee"/>
+                <Entry Text="{Binding SelectedEmployee.FirstName}"/>
+                <Button Text="Trip ID" Command="ShowCreateNewEmployee"/>
+                <Button Text="Reset" Command="ShowCreateNewEmployee"/>
+            </HorizontalStackLayout>
+            <Label Text="Trips:"/>
+            <VerticalStackLayout BindableLayout.ItemsSource="{Binding Trips}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:Employee">
+                        <Grid Focused="Employee_Selected">
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding FirstName}"/>
+                                <Label Text="{Binding LastName}"/>
+                                <Label Text="{Binding EmployeeId}"/>
+                                <Label Text="{Binding Commission}"/>
+                                <Label Text="{Binding Title}"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+        </Grid>
+        <HorizontalStackLayout IsVisible="{Binding ShowCreateUpdateEmployee}">
+            <Entry Text="{Binding SelectedEmployee.FirstName}"/>
+            <Entry Text="{Binding SelectedEmployee.LastName}"/>
+            <Entry Text="{Binding SelectedEmployee.EmployeeId}"/>
+            <Entry Text="{Binding SelectedEmployee.Commission}"/>
+            <Entry Text="{Binding SelectedEmployee.Title}"/>
+            <Button Text="Create" Command="CreateNewEmployee"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
